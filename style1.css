@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    padding: 20px; /* Add padding to create gap */
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Light gray background */
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container form {
+    background-color: #fff; /* White background for the form */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    width: 300px;
+}
+
+h1 {
+    text-align: center;
+    color: #333; /* Dark gray color for the heading */
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form select,
+form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+form input[type="file"] {
+    margin-top: 5px;
+}
+
+form button {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049; /* Darker green background on hover */
+}
+
+#qrCodeContainer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}

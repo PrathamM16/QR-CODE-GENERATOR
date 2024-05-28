@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <h1>TAKE MEMBERSHIP</h1>
+    <form id="subscriptionForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="phoneNumber">Phone Number:</label><br>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required><br>
+        <label for="image">Image:</label><br>
+        <input type="file" id="image" name="image" accept="image/*" required><br>
+        <label for="subscription">Subscription:</label><br>
+        <select id="subscription" name="subscription" required>
+            <option value="Subscription A">Subscription A - Rs. 2000</option>
+            <option value="Subscription B">Subscription B - Rs. 3000</option>
+            <option value="Subscription C">Subscription C - Rs. 4000</option>
+            <option value="Subscription D">Subscription D - Rs. 5000</option>
+        </select><br><br>
+        <button type="submit">Subscribe</button>
+    </form>
+    <div id="qrCodeContainer"></div>
+
+    <script>
+        document.getElementById('subscriptionForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phoneNumber = formData.get('phoneNumber');
+            const subscription = formData.get('subscription');
+            const image = formData.get('image');
+
+            // You may need to handle image upload separately and generate a URL for it
+            
+            const response = await fetch('/generateQR', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, email, phoneNumber, subscription, image })
+            });
+
+            const data = await response.json();
+            const qrCodeContainer = document.getElementById('qrCodeContainer');
+            qrCodeContainer.innerHTML = `<img src="${data.qrCode}" alt="QR Code">`;
+        });
+    </script>
+</body>
+</html>
